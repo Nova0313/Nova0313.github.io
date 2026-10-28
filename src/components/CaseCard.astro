@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  number: string;
+  category: string;
+  title: string;
+  role: string;
+  description: string;
+  result: string;
+  tone: 'forest' | 'blue' | 'amber';
+}
+const { href, number, category, title, role, description, result, tone } = Astro.props;
+---
+
+<a class={`case-card tone-${tone}`} href={href}>
+  <div class="case-art" aria-hidden="true">
+    <span class="art-window">
+      <i></i><i></i><i></i>
+      <b class="art-line line-one"></b><b class="art-line line-two"></b><b class="art-line line-three"></b>
+      <b class="art-orbit orbit-one"></b><b class="art-orbit orbit-two"></b>
+    </span>
+    <span class="art-index">{number} / 03</span>
+  </div>
+  <div class="case-body">
+    <span class="case-category">{category}</span>
+    <h3>{title}</h3>
+    <p class="case-role">{role}</p>
+    <p class="case-description">{description}</p>
+    <div class="case-result"><span class="result-dot"></span><span>{result}</span></div>
+    <span class="case-more">查看案例 <span aria-hidden="true">↗</span></span>
+  </div>
+</a>

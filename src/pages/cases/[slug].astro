@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<BaseLayout title={`${d.title} · 钱辰 Chen Qian`} description={d.summary}>
+  <article class="detail-page">
+    <div class="wrap detail-wrap">
+      <a class="back-link" href={`/#${d.backAnchor}`}><span aria-hidden="true">←</span> 返回{d.category}</a>
+      <div class="detail-intro">
+        <div class="detail-brow"><span class="section-kicker">CASE STUDY / {d.category}</span><span class="detail-period">{d.period}</span></div>
+        <h1>{d.title}</h1>
+        <p class="detail-eyebrow">{d.eyebrow}</p>
+        <p class="detail-summary">{d.summary}</p>
+        <div class="tag-row">{d.tags.map((tag: string) => <span>{tag}</span>)}</div>
+      </div>
+      {d.facts.length > 0 && <div class="fact-grid">{d.facts.map((fact: {value: string, label: string}) => <div><strong>{fact.value}</strong><span>{fact.label}</span></div>)}</div>}
+      <div class="detail-columns">
+        <aside class="detail-aside"><span>阅读目录</span><a href="#case-content">案例概述 ↓</a>{d.links.map((link: {label: string, url: string}) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</aside>
+        <div id="case-content" class="prose"><Content /></div>
+      </div>
+      <div class="detail-end"><a href={`/#${d.backAnchor}`}>← 返回{d.category}</a><a href="/#contact">联系与更多链接 ↗</a></div>
+    </div>
+  </article>
+</BaseLayout>

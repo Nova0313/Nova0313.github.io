@@ -1,0 +1,80 @@
+---
+import { site } from '../data/site';
+import '../styles.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  isHome?: boolean;
+}
+
+const {
+  title = '钱辰 Chen Qian · 研究、战略与构建',
+  description = '钱辰的个人网站：交通与自动驾驶研究、AI 战略与产品实践，以及独立构建的工具。',
+  isHome = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f5ef" />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <div class="header-inner wrap">
+        <a class="brand" href="/" aria-label="钱辰，返回首页"><span class="brand-mark" aria-hidden="true">CQ<span class="brand-dot">.</span></span><span class="brand-name">钱辰 <span>/ Chen Qian</span></span></a>
+        <nav class="main-nav" aria-label="主导航">
+          <a href="/#experience" data-nav="experience">实习经历</a>
+          <a href="/#research" data-nav="research">研究成果</a>
+          <a href="/#projects" data-nav="projects">个人项目</a>
+          <a href="/#beyond" data-nav="beyond">研究之外</a>
+          <a href="/#contact" data-nav="contact">联系</a>
+        </nav>
+        <a class="header-cta" href={site.github} target="_blank" rel="noopener noreferrer" aria-label="在新窗口打开 GitHub 主页">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer id="contact" class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <span class="section-kicker light">CONTACT / 联系</span>
+          <h2>想继续聊聊？</h2>
+          <p>关于 AI 战略、产品实践或交通研究，欢迎通过公开主页找到我。</p>
+          <div class="footer-links">
+            {site.email && <a href={`mailto:${site.email}`}>邮箱 <span aria-hidden="true">↗</span></a>}
+            <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href={site.scholar} target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+            {site.resume && <a href={site.resume} download>下载简历 <span aria-hidden="true">↓</span></a>}
+          </div>
+        </div>
+        <div class="footer-aside">
+          <span class="footer-monogram">CQ<span>.</span></span>
+          <p>从研究问题，到作出判断，再把想法做成工具。</p>
+          <small>© {new Date().getFullYear()} Chen Qian · Made with Astro</small>
+        </div>
+      </div>
+    </footer>
+    {isHome && <script>
+      const links = [...document.querySelectorAll('[data-nav]')];
+      const sections = [...document.querySelectorAll('section[id], footer[id]')].filter(section => links.some(link => link.dataset.nav === section.id));
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) links.forEach(link => link.classList.toggle('is-active', link.dataset.nav === visible.target.id));
+        }, { rootMargin: '-18% 0px -60% 0px', threshold: [0, .15, .5] });
+        sections.forEach(section => observer.observe(section));
+      }
+    </script>}
+  </body>
+</html>
