@@ -1,0 +1,75 @@
+/* 网站配色呼应参考图 1：黑白灰空间，蓝、绿和暖光只作局部点缀。 */
+:root{--ink:#303332;--muted:#747977;--line:#d9dbd8;--green:#343a39;--cream:#f3f2f0}
+body{color:var(--ink);background:#f3f2f0}
+.site-header{background:rgba(245,244,242,.96);border-bottom-color:#d9dbd8}
+.brand-dot,.footer-monogram span{color:#d4a45b}
+.brand-name span,.main-nav a{color:#6f7472}
+.main-nav a:hover,.main-nav a.is-active{color:#303638}
+.main-nav a.is-active:after{background:#575d5c}
+.header-cta{border-color:#bcc0bd}
+.header-cta:hover{background:#e9eae7}
+.mode-toggle{background:#e9eae7;border-color:#bfc3c0;color:#363d3b}
+.mode-toggle:hover,.mode-toggle[aria-pressed="true"]{background:#dadcd8;border-color:#8f9691}
+.explore-hero{background:linear-gradient(180deg,#f5f4f2,#ececea 68%,#f5f4f2)}
+.eyebrow-line,.explore-instruction strong,.quick-title,.section-kicker,.small-label{color:#5b6563}
+.eyebrow-dot{background:#748e78;box-shadow:0 0 0 4px #d9e2d9}
+.explore-copy h1>span{color:#323735}
+.explore-copy h1 small,.explore-meta,.explore-instruction p{color:#797f7a}
+.explore-instruction{border-color:#b4b9b4}
+.instruction-spark{color:#c99a56}
+.button-primary,.dialog-link{background:#323a3b;color:#fff;box-shadow:none}
+.button-primary:hover,.dialog-link:hover{background:#222829}
+.button-light{border-color:#c8cbc6}
+.button-light:hover{background:#e8eae7}
+.button-muted{background:#e7e8e5;color:#8f9691}
+.text-link,.back-link,.case-more,.subsection-head>a,.project-bottom span:last-child,.project-footnote a,.detail-end,.detail-aside>a,.prose a,.paper-arrow{color:#49636b}
+.room-caption,.room-bottom{color:#747c78}
+.room-stage{background:#504d49;border-color:#6d6965;box-shadow:0 25px 55px #34333230}
+.room-hotspot{background:#353d3d;box-shadow:0 0 0 4px #e7bd77a0,0 8px 20px #23232270}
+.room-hotspot:hover,.room-hotspot:focus-visible{box-shadow:0 0 0 6px #e7bd77c4,0 8px 24px #23232270}
+.hotspot-label{color:#363d3b;border-color:#d6d8d4}
+.room-legend button,.quick-work a{border-color:#d4d7d2;background:#fdfdfb;color:#3d4d4e}
+.room-legend button:hover,.quick-work a:hover{background:#e8ebe7}
+.room-dialog{background:#f8f8f6;border-color:#d8dbd6;color:#343a38}
+.room-dialog::backdrop{background:#232724b5}
+.room-dialog .dialog-close{background:#e9eae7;color:#383e3c}
+.dialog-kicker{color:#74817c}
+.featured,.research,.beyond,.contact-page,.section-page-content .research,.section-page-content .beyond{background:#f8f8f6}
+.experience{background:#ededeb}
+.projects{background:#f2f1ef}
+.case-card,.education-card,.project-card,.beyond-card{border-color:#dedfdb}
+.tone-forest .case-art{background:linear-gradient(135deg,#e9eae7,#b8bfbc)}
+.tone-blue .case-art{background:linear-gradient(135deg,#e4e9eb,#b1c1c7)}
+.tone-amber .case-art{background:linear-gradient(135deg,#eeebe4,#d4c6ae)}
+.art-line,.tone-blue .art-line,.tone-amber .art-line{background:#697b7c}
+.art-orbit,.tone-blue .art-orbit,.tone-amber .art-orbit{border-color:#7e9090}
+.orbit-two,.tone-blue .orbit-two,.tone-amber .orbit-two{background:#7e9090}
+.case-category,.case-result,.case-more,.dataset-url{color:#526369}
+.result-dot{background:#d1a25b}
+.experience-list,.experience-row{border-color:#d1d3cf}
+.experience-row:hover{background:#e4e6e2}
+.experience-date,.row-arrow,.paper-year{color:#697572}
+.pill,.pill-blue{background:#dfe3e0;color:#4d5f5d}
+.inline-facts span{border-color:#ccd0cb;color:#606b67}
+.dataset-card{background:#e8eae7;border-color:#d6d9d5}
+.dataset-card:hover{background:#dfe3df}
+.route-line,.route-node{background:#84979b;border-color:#84979b}
+.route-b{background:#b0bec0}
+.paper-row:hover{background:#eceeeb}
+.research-note{background:#ededeb;border-color:#aeb9b2}
+.note-icon{color:#9f8c6c}
+.project-glyph,.glyph-search{background:#e9ecea}
+.glyph-token span,.glyph-token span:nth-child(2),.glyph-token span:nth-child(3){background:#8a9895}
+.glyph-search span,.glyph-search span:nth-child(2){border-color:#90a3a5}
+.beyond-icon,.beyond-card:nth-child(2) .beyond-icon,.beyond-card:nth-child(3) .beyond-icon,.beyond-card:nth-child(4) .beyond-icon{color:#858f8a}
+.site-footer{background:#303330}
+.section-kicker.light{color:#d4d8d2}
+.site-footer p{color:#c5cbc4}
+.footer-links a{border-color:#6d746e}
+.footer-links a:hover{background:#414842}
+.detail-page{background:#f8f8f6}
+.detail-intro h1,.prose h2{color:#2f3634}
+.detail-eyebrow,.detail-summary{color:#53615b}
+.tag-row span,.fact-grid>div{background:#e9ebe8;color:#53605a}
+.fact-grid{background:#d6dbd6;border-color:#d6dbd6}
+.fact-grid strong{color:#394e51}
