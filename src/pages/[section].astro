@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LongContent from '../components/LongContent.astro';
+import { site } from '../data/site';
+
+const sections = {
+  experience: { name: '实习经历', intro: 'AI 战略洞察与 Agent 产品实践。' },
+  research: { name: '研究成果', intro: '交通研究、论文与开放数据集。' },
+  projects: { name: '个人项目', intro: '从真实问题出发，独立构建工具。' },
+  beyond: { name: '研究之外', intro: '小狗、游戏、舞蹈与志愿服务。' },
+  contact: { name: '联系', intro: '公开工作与研究成果的入口。' },
+} as const;
+type Section = keyof typeof sections;
+
+export function getStaticPaths() {
+  return ['experience', 'research', 'projects', 'beyond', 'contact'].map(section => ({ params: { section }, props: { section: section as Section } }));
+}
+
+const { section } = Astro.props as { section: Section };
+const current = sections[section];
+---
+
+<BaseLayout title={`${current.name} · 钱辰 Chen Qian`} description={current.intro} currentSection={section}>
+  <div class="section-page-top wrap"><a href="/" class="back-link">← 返回像素小窝</a><span>{current.name.toUpperCase()} / CHEN QIAN</span></div>
+  {section === 'contact' ? (
+    <section class="contact-page section-pad" aria-labelledby="contact-page-title">
+      <div class="wrap contact-page-grid">
+        <div><span class="section-kicker">CONTACT / 联系</span><h1 id="contact-page-title">保持联系。</h1><p>关于 AI 战略、产品实践和交通研究，欢迎从下面的公开入口联系或了解我。</p></div>
+        <div class="contact-page-links">
+          {site.email && <a href={`mailto:${site.email}`}><span>邮箱</span><strong>{site.email}</strong><span aria-hidden="true">↗</span></a>}
+          <a href={site.github} target="_blank" rel="noopener noreferrer"><span>代码与项目</span><strong>GitHub · Nova0313</strong><span aria-hidden="true">↗</span></a>
+          <a href={site.scholar} target="_blank" rel="noopener noreferrer"><span>论文与研究</span><strong>Google Scholar</strong><span aria-hidden="true">↗</span></a>
+          {site.resume && <a href={site.resume} download><span>最新简历</span><strong>下载 PDF</strong><span aria-hidden="true">↓</span></a>}
+        </div>
+      </div>
+    </section>
+  ) : <div class="section-page-content"><LongContent only={section} /></div>}
+</BaseLayout>

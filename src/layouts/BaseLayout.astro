@@ -1,17 +1,20 @@
 ---
 import { site } from '../data/site';
 import '../styles.css';
+import '../explore.css';
 
 interface Props {
   title?: string;
   description?: string;
   isHome?: boolean;
+  currentSection?: string;
 }
 
 const {
   title = '钱辰 Chen Qian · 研究、战略与构建',
   description = '钱辰的个人网站：交通与自动驾驶研究、AI 战略与产品实践，以及独立构建的工具。',
   isHome = false,
+  currentSection = '',
 } = Astro.props;
 ---
 
@@ -35,12 +38,13 @@ const {
       <div class="header-inner wrap">
         <a class="brand" href="/" aria-label="钱辰，返回首页"><span class="brand-mark" aria-hidden="true">CQ<span class="brand-dot">.</span></span><span class="brand-name">钱辰 <span>/ Chen Qian</span></span></a>
         <nav class="main-nav" aria-label="主导航">
-          <a href="/#experience" data-nav="experience">实习经历</a>
-          <a href="/#research" data-nav="research">研究成果</a>
-          <a href="/#projects" data-nav="projects">个人项目</a>
-          <a href="/#beyond" data-nav="beyond">研究之外</a>
-          <a href="/#contact" data-nav="contact">联系</a>
+          <a href="/experience/" class:list={{ 'is-active': currentSection === 'experience' }} aria-current={currentSection === 'experience' ? 'page' : undefined}>实习经历</a>
+          <a href="/research/" class:list={{ 'is-active': currentSection === 'research' }} aria-current={currentSection === 'research' ? 'page' : undefined}>研究成果</a>
+          <a href="/projects/" class:list={{ 'is-active': currentSection === 'projects' }} aria-current={currentSection === 'projects' ? 'page' : undefined}>个人项目</a>
+          <a href="/beyond/" class:list={{ 'is-active': currentSection === 'beyond' }} aria-current={currentSection === 'beyond' ? 'page' : undefined}>研究之外</a>
+          <a href="/contact/" class:list={{ 'is-active': currentSection === 'contact' }} aria-current={currentSection === 'contact' ? 'page' : undefined}>联系</a>
         </nav>
+        {isHome && <button id="view-toggle" class="mode-toggle" type="button" aria-pressed="false" aria-controls="long-content" aria-label="切换为长页浏览"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 4h12M3 9h12M3 14h12"/></svg><span>长页浏览</span></button>}
         <a class="header-cta" href={site.github} target="_blank" rel="noopener noreferrer" aria-label="在新窗口打开 GitHub 主页">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </header>
@@ -65,16 +69,5 @@ const {
         </div>
       </div>
     </footer>
-    {isHome && <script>
-      const links = [...document.querySelectorAll('[data-nav]')];
-      const sections = [...document.querySelectorAll('section[id], footer[id]')].filter(section => links.some(link => link.dataset.nav === section.id));
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (visible) links.forEach(link => link.classList.toggle('is-active', link.dataset.nav === visible.target.id));
-        }, { rootMargin: '-18% 0px -60% 0px', threshold: [0, .15, .5] });
-        sections.forEach(section => observer.observe(section));
-      }
-    </script>}
   </body>
 </html>

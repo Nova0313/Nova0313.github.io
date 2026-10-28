@@ -15,7 +15,7 @@ const d = entry.data;
 <BaseLayout title={`${d.title} · 钱辰 Chen Qian`} description={d.summary}>
   <article class="detail-page">
     <div class="wrap detail-wrap">
-      <a class="back-link" href={`/#${d.backAnchor}`}><span aria-hidden="true">←</span> 返回{d.category}</a>
+      <a class="back-link" href={`/${d.backAnchor}/`}><span aria-hidden="true">←</span> 返回{d.category}</a>
       <div class="detail-intro">
         <div class="detail-brow"><span class="section-kicker">CASE STUDY / {d.category}</span><span class="detail-period">{d.period}</span></div>
         <h1>{d.title}</h1>
@@ -28,7 +28,7 @@ const d = entry.data;
         <aside class="detail-aside"><span>阅读目录</span><a href="#case-content">案例概述 ↓</a>{d.links.map((link: {label: string, url: string}) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</aside>
         <div id="case-content" class="prose"><Content /></div>
       </div>
-      <div class="detail-end"><a href={`/#${d.backAnchor}`}>← 返回{d.category}</a><a href="/#contact">联系与更多链接 ↗</a></div>
+      <div class="detail-end"><a href={`/${d.backAnchor}/`}>← 返回{d.category}</a><a href="/contact/">联系与更多链接 ↗</a></div>
     </div>
   </article>
 </BaseLayout>

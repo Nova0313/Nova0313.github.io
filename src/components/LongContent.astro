@@ -1,0 +1,76 @@
+---
+import CaseCard from './CaseCard.astro';
+import { site, papers } from '../data/site';
+interface Props { only?: 'featured' | 'experience' | 'research' | 'projects' | 'beyond'; }
+const { only } = Astro.props;
+---
+
+{(!only || only === 'featured') && (
+  <section class="featured section-pad" aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="section-heading"><div><span class="section-kicker">SELECTED WORK / 精选案例</span><h2 id="featured-title">从问题，到可用的结果。</h2></div><p>三项工作，分别代表我的战略研究、数据集产品化与独立构建实践。</p></div>
+      <div class="case-grid">
+        <CaseCard href="/cases/baidu/" number="01" category="AI 战略 · 实习" title="百度 AI 战略" role="ACG 事业部 · AI 战略实习生" description="研究具身智能机会，建立行业洞察工作流，并参与拓新产品的交付。" result="5 场深度访谈 · 5 个系统 · 导入 2 家创业客户" tone="forest" />
+        <CaseCard href="/cases/swiftraj/" number="02" category="交通研究 · 数据集" title="SWIFTraj" role="数据集官网前端与申请流程产品化" description="让研究者更易理解、查看和申请交通轨迹数据，也让申请归档更可靠。" result="238 封邮件分析 · 抽取召回率 60% → 100%" tone="blue" />
+        <CaseCard href="/cases/tokenviewer/" number="03" category="独立构建 · macOS" title="TokenViewer" role="AI 工具额度可视化应用" description="从日常使用中的信息不透明问题出发，做一款更直观的桌面工具。" result="公开仓库可查看；界面与实现细节待补充" tone="amber" />
+      </div>
+    </div>
+  </section>
+)}
+
+{(!only || only === 'experience') && (
+  <section id="experience" class="section-pad experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-heading"><div><span class="section-kicker">EXPERIENCE / 实习经历</span><h2 id="experience-title">让研究进入真实场景。</h2></div><p>从产品设计与评测，到业务单元内的战略洞察和落地。</p></div>
+      <div class="experience-list">
+        <a class="experience-row" href="/cases/baidu/"><div class="experience-date">2026.08 — 至今</div><div class="experience-main"><span class="pill">AI 战略</span><h3>百度 <span>ACG 事业部业务拓展二部</span></h3><p>具身智能战略研究、政务交通行业洞察、AI 原生拓新产品与组内协作。</p><div class="inline-facts"><span>5 场访谈</span><span>4 篇报告</span><span>5 个系统</span></div></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="experience-row" href="/cases/asiainfo/"><div class="experience-date">2026.04 — 2026.07</div><div class="experience-main"><span class="pill pill-blue">AI 产品</span><h3>亚信 <span>联通事业群 AI 解决方案部</span></h3><p>参与 HelmClaw 的 Agent 架构调研、Skill 功能设计和 HybridJudge 评测体系建设。</p><div class="inline-facts"><span>5 项功能需求</span><span>200 条标注会话</span><span>对齐度 72% → 93%</span></div></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+)}
+
+{(!only || only === 'research') && (
+  <section id="research" class="section-pad research" aria-labelledby="research-title">
+    <div class="wrap">
+      <div class="section-heading"><div><span class="section-kicker">RESEARCH / 研究成果</span><h2 id="research-title">以交通研究为起点。</h2></div><p>网联与自动驾驶车辆、强化学习，以及让开放数据真正被研究者使用。</p></div>
+      <div class="research-intro">
+        <div class="education-card"><span class="small-label">EDUCATION / 教育</span><h3>东南大学</h3><p>交通运输工程 · 硕博连读</p><div class="education-divider"></div><h3>西南交通大学</h3><p>交通工程 · 本科</p></div>
+        <a class="dataset-card" href="/cases/swiftraj/"><span class="small-label">FEATURED DATASET / 开放数据</span><div class="dataset-visual" aria-hidden="true"><span class="route-line route-a"></span><span class="route-line route-b"></span><span class="route-node n1"></span><span class="route-node n2"></span><span class="route-node n3"></span></div><h3>SWIFTraj <span aria-hidden="true">↗</span></h3><p>从官网体验到申请自动化，让交通轨迹数据更容易理解与获取。</p><span class="dataset-url">swiftraj.com · 查看案例</span></a>
+      </div>
+      <div class="subsection-head"><div><span class="small-label">PUBLICATIONS</span><h3>论文发表</h3></div><a href={site.scholar} target="_blank" rel="noopener noreferrer">Google Scholar ↗</a></div>
+      <div class="paper-list">
+        {papers.map(paper => <a class="paper-row" href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer"><span class="paper-year">{paper.year}</span><div><h4>{paper.title}</h4><p>{paper.authors}</p><small>{paper.venue} · DOI: {paper.doi}</small></div><span class="paper-arrow" aria-hidden="true">↗</span></a>)}
+      </div>
+      <div class="research-note"><span class="note-icon" aria-hidden="true">✳</span><p>曾两次参加 TRB 研究交流。年份、主题与现场照片会在资料确认后补充。论文信息采用截至 2026 年 10 月 28 日核对的正式发表版本。</p></div>
+    </div>
+  </section>
+)}
+
+{(!only || only === 'projects') && (
+  <section id="projects" class="section-pad projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="section-heading"><div><span class="section-kicker">SIDE PROJECTS / 个人项目</span><h2 id="projects-title">把想法亲手做出来。</h2></div><p>用工具解决自己的真实问题，也观察它们能否帮助更多人。</p></div>
+      <div class="project-grid">
+        <a class="project-card" href="/cases/tokenviewer/"><div class="project-top"><span>01 / MACOS APP</span><span aria-hidden="true">↗</span></div><div class="project-glyph glyph-token" aria-hidden="true"><span></span><span></span><span></span></div><h3>TokenViewer</h3><p>AI 工具额度可视化应用，让分散的信息更容易被看见。</p><div class="project-bottom"><span>产品设计 · 独立构建</span><span>查看详情 →</span></div></a>
+        <a class="project-card" href="/cases/bosszhipin-search/"><div class="project-top"><span>02 / SEARCH TOOL</span><span aria-hidden="true">↗</span></div><div class="project-glyph glyph-search" aria-hidden="true"><span></span><span></span><span></span></div><h3>bosszhipin-search</h3><p>批量检索岗位与公司信号，辅助 AI 原生拓新的早期判断。</p><div class="project-bottom"><span>信息检索 · LLM</span><span>查看详情 →</span></div></a>
+      </div>
+      <div class="project-footnote">SWIFTrajWebsite 是<a href="https://github.com/Nova0313/SWIFTrajWebsite" target="_blank" rel="noopener noreferrer">数据集官网早期原型 ↗</a>；正式网站见<a href="https://swiftraj.com/" target="_blank" rel="noopener noreferrer">swiftraj.com ↗</a>。</div>
+    </div>
+  </section>
+)}
+
+{(!only || only === 'beyond') && (
+  <section id="beyond" class="section-pad beyond" aria-labelledby="beyond-title">
+    <div class="wrap">
+      <div class="section-heading"><div><span class="section-kicker">BEYOND RESEARCH / 研究之外</span><h2 id="beyond-title">也认真过好研究之外的生活。</h2></div><p>照片和更具体的故事，等我整理好再放上来。</p></div>
+      <div class="beyond-grid">
+        <div class="beyond-card"><div class="beyond-icon" aria-hidden="true">✿</div><span>01 / 小狗</span><h3>两只小狗</h3><p>家里有两位毛茸茸的成员。名字、合照和日常小档案待补充。</p></div>
+        <div class="beyond-card"><div class="beyond-icon" aria-hidden="true">✧</div><span>02 / 游戏</span><h3>像素世界与游戏</h3><p>喜欢《饥荒》《星露谷物语》《泰拉瑞亚》《潜水员戴夫》和《雀魂》。</p></div>
+        <div class="beyond-card"><div class="beyond-icon" aria-hidden="true">◈</div><span>03 / 舞蹈</span><h3>体育舞蹈</h3><p>曾是东南大学体育舞蹈校队成员，参加过江苏省省赛和东大跨年晚会。</p></div>
+        <div class="beyond-card"><div class="beyond-icon" aria-hidden="true">☼</div><span>04 / 志愿服务</span><h3>寺庙义工</h3><p>有在寺庙做义工的经历。做过的事与个人感受会在整理后补充。</p></div>
+      </div>
+    </div>
+  </section>
+)}
+
