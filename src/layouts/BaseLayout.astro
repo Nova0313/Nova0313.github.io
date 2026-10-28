@@ -3,6 +3,7 @@ import { site } from '../data/site';
 import '../styles.css';
 import '../explore.css';
 import '../neutral-theme.css';
+import '../room-interactions.css';
 
 interface Props {
   title?: string;
@@ -40,7 +41,7 @@ const {
         <a class="brand" href="/" aria-label="钱辰，返回首页"><span class="brand-mark" aria-hidden="true">CQ<span class="brand-dot">.</span></span><span class="brand-name">钱辰 <span>/ Chen Qian</span></span></a>
         <nav class="main-nav" aria-label="主导航">
           <a href="/experience/" class:list={{ 'is-active': currentSection === 'experience' }} aria-current={currentSection === 'experience' ? 'page' : undefined}>实习经历</a>
-          <a href="/research/" class:list={{ 'is-active': currentSection === 'research' }} aria-current={currentSection === 'research' ? 'page' : undefined}>研究成果</a>
+          <a href="/research/" class:list={{ 'is-active': currentSection === 'research' }} aria-current={currentSection === 'research' ? 'page' : undefined}>研究经历</a>
           <a href="/projects/" class:list={{ 'is-active': currentSection === 'projects' }} aria-current={currentSection === 'projects' ? 'page' : undefined}>个人项目</a>
           <a href="/beyond/" class:list={{ 'is-active': currentSection === 'beyond' }} aria-current={currentSection === 'beyond' ? 'page' : undefined}>研究之外</a>
           <a href="/contact/" class:list={{ 'is-active': currentSection === 'contact' }} aria-current={currentSection === 'contact' ? 'page' : undefined}>联系</a>

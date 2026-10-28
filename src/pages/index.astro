@@ -21,17 +21,40 @@ import { site } from '../data/site';
       <div class="explore-instruction"><span class="instruction-spark" aria-hidden="true">✳</span><strong>欢迎来到我的小窝</strong><p>点击房间中的物件，了解每个栏目；也可以用顶部导航直接前往。</p></div>
     </div>
     <div class="wrap room-wrap">
-      <div class="room-caption"><span>CHEN'S STUDIO / 像素小窝</span><span>点击发光标记探索 <span aria-hidden="true">↘</span></span></div>
+      <div class="room-caption"><span>CHEN'S STUDIO / 像素小窝</span><span>点击房间里的物件探索 <span aria-hidden="true">↘</span></span></div>
       <div class="room-stage">
         <img class="room-image" src="/images/studio-pixel-v2.png" width="512" height="384" alt="黑白灰像素风双层小窝：窗外有局部蓝色河景，室内有研究桌、白板、电脑；窗边坐着白色比熊和小体灰色泰迪" fetchpriority="high" />
-        <button class="room-hotspot hotspot-research" type="button" data-room="research" aria-label="查看研究桌：研究成果简介"><span class="hotspot-core" aria-hidden="true">✦</span><span class="hotspot-label">研究成果</span></button>
-        <button class="room-hotspot hotspot-experience" type="button" data-room="experience" aria-label="查看白板：实习经历简介"><span class="hotspot-core" aria-hidden="true">✦</span><span class="hotspot-label">实习经历</span></button>
-        <button class="room-hotspot hotspot-projects" type="button" data-room="projects" aria-label="查看电脑：个人项目简介"><span class="hotspot-core" aria-hidden="true">✦</span><span class="hotspot-label">个人项目</span></button>
-        <button class="room-hotspot hotspot-beyond" type="button" data-room="beyond" aria-label="查看小狗角落：研究之外简介"><span class="hotspot-core" aria-hidden="true">✦</span><span class="hotspot-label">研究之外</span></button>
-        <button class="room-hotspot hotspot-contact" type="button" data-room="contact" aria-label="查看小灯：联系简介"><span class="hotspot-core" aria-hidden="true">✦</span><span class="hotspot-label">联系</span></button>
+        <a class="room-object object-experience" href="/experience/" data-room="experience" aria-label="一楼电脑桌：了解实习经历"></a>
+        <a class="room-object object-beyond" href="/beyond/" data-room="beyond" aria-label="一楼的小狗：了解研究之外"></a>
+        <a class="room-object object-research" href="/research/" data-room="research" aria-label="一楼电视墙书架：了解研究经历"></a>
+        <a class="room-object object-projects" href="/projects/" data-room="projects" aria-label="二楼电脑桌：了解个人项目"></a>
+        <svg class="room-effects" viewBox="0 0 512 384" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <g class="fx fx-experience">
+            <path class="monitor-scan" d="M222 222h27M261 233h24" stroke="#9ed8db" stroke-width="2" shape-rendering="crispEdges" />
+            <path class="monitor-code" d="M223 228h10m3 0h7m18 11h9m3 0h8" stroke="#b9e3df" stroke-width="2" shape-rendering="crispEdges" />
+            <rect class="desk-pixel" x="301" y="267" width="4" height="4" fill="#d4ae6f" />
+            <rect class="desk-pixel" x="311" y="263" width="3" height="3" fill="#d4ae6f" />
+          </g>
+          <g class="fx fx-beyond" shape-rendering="crispEdges">
+            <path class="dog-tail tail-white" d="M120 231h-4v-3h-3" fill="none" stroke="#f6f5f0" stroke-width="3" />
+            <path class="dog-tail tail-gray" d="M153 231h4v-3h3" fill="none" stroke="#777572" stroke-width="3" />
+            <path class="dog-spark spark-one" d="M132 206h3v-3h3v3h3v3h-3v3h-3v-3h-3z" fill="#d5ad72" />
+            <path class="dog-spark spark-two" d="M154 211h2v-2h2v2h2v2h-2v2h-2v-2h-2z" fill="#d5ad72" />
+          </g>
+          <g class="fx fx-research" shape-rendering="crispEdges">
+            <g class="book-pull"><rect x="368" y="205" width="7" height="17" fill="#d4b378" stroke="#333635" stroke-width="1"/><rect x="369" y="207" width="5" height="3" fill="#f2efe8"/><rect x="370" y="217" width="3" height="2" fill="#f2efe8"/></g>
+            <path class="book-spark" d="M355 189h2v-2h2v2h2v2h-2v2h-2v-2h-2z" fill="#d4b378" />
+          </g>
+          <g class="fx fx-projects" shape-rendering="crispEdges">
+            <path class="upper-screen" d="M286 70h23v13h-23z" fill="#91b8bf" opacity=".4" />
+            <path class="upper-code" d="M289 74h8m-8 4h13m-2-4h5" stroke="#d8f0eb" stroke-width="2" />
+            <rect class="upper-pixel" x="313" y="61" width="3" height="3" fill="#d3ad70" />
+            <rect class="upper-pixel" x="322" y="55" width="2" height="2" fill="#d3ad70" />
+          </g>
+        </svg>
       </div>
-      <div class="room-legend" aria-label="小窝栏目入口"><button type="button" data-room="research">研究桌 · 研究成果</button><button type="button" data-room="experience">白板 · 实习经历</button><button type="button" data-room="projects">电脑 · 个人项目</button><button type="button" data-room="beyond">小狗 · 研究之外</button><button type="button" data-room="contact">小灯 · 联系</button></div>
-      <div class="room-bottom"><span>窗边的研究桌 · 白板 · 开发电脑 · 比熊与灰色泰迪</span><span>所有入口也可通过键盘访问</span></div>
+      <div class="room-legend" aria-label="小窝栏目入口"><a href="/experience/" data-room="experience">一楼电脑桌 · 实习经历</a><a href="/beyond/" data-room="beyond">小狗 · 研究之外</a><a href="/research/" data-room="research">电视墙书架 · 研究经历</a><a href="/projects/" data-room="projects">二楼电脑桌 · 个人项目</a></div>
+      <div class="room-bottom"><span>点击物件会播放一段小动画，再打开栏目简介</span><span>可用键盘 Tab 选择物件</span></div>
     </div>
     <div class="wrap quick-work"><span class="quick-title">代表案例</span><a href="/cases/baidu/">百度 AI 战略 <span aria-hidden="true">↗</span></a><a href="/cases/swiftraj/">SWIFTraj <span aria-hidden="true">↗</span></a><a href="/cases/tokenviewer/">TokenViewer <span aria-hidden="true">↗</span></a></div>
   </section>
@@ -48,24 +71,38 @@ import { site } from '../data/site';
   <noscript><style>#long-content[hidden]{display:block!important}</style></noscript>
   <script>
     const entries = {
-      research: { title: '研究成果', summary: '从网联与自动驾驶车辆研究出发，参与 SWIFTraj 开放数据集建设，并发表交通领域研究论文。', href: '/research/' },
+      research: { title: '研究经历与成果', summary: '从网联与自动驾驶车辆研究出发，参与 SWIFTraj 开放数据集建设，并发表交通领域研究论文。', href: '/research/' },
       experience: { title: '实习经历', summary: '在百度做 AI 战略洞察与拓新工具，在亚信参与 Agent 产品设计和效果评测。', href: '/experience/' },
       projects: { title: '个人项目', summary: '亲手构建 TokenViewer 和 bosszhipin-search，把真实使用中的问题做成可用工具。', href: '/projects/' },
       beyond: { title: '研究之外', summary: '白色比熊、小体灰色泰迪、游戏、体育舞蹈和寺庙义工，是研究工作之外的日常。', href: '/beyond/' },
-      contact: { title: '联系', summary: '通过 GitHub 和 Google Scholar 查看更多公开工作与研究成果。', href: '/contact/' },
     } as const;
     const dialog = document.querySelector<HTMLDialogElement>('#room-dialog');
     const title = document.querySelector<HTMLElement>('#room-dialog-title');
     const summary = document.querySelector<HTMLElement>('#room-dialog-summary');
     const link = document.querySelector<HTMLAnchorElement>('#room-dialog-link');
-    document.querySelectorAll<HTMLButtonElement>('[data-room]').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = entries[button.dataset.room as keyof typeof entries];
+    const roomStage = document.querySelector<HTMLElement>('.room-stage');
+    let busy = false;
+    document.querySelectorAll<HTMLAnchorElement>('[data-room]').forEach(object => {
+      const key = object.dataset.room as keyof typeof entries;
+      object.addEventListener('pointerenter', () => { if (roomStage) roomStage.dataset.preview = key; });
+      object.addEventListener('pointerleave', () => { if (roomStage?.dataset.preview === key) delete roomStage.dataset.preview; });
+      object.addEventListener('focus', () => { if (roomStage) roomStage.dataset.preview = key; });
+      object.addEventListener('blur', () => { if (roomStage?.dataset.preview === key) delete roomStage.dataset.preview; });
+      object.addEventListener('click', event => {
+        const item = entries[key];
         if (!item || !dialog || !title || !summary || !link) return;
+        event.preventDefault();
+        if (busy) return;
+        busy = true;
+        if (roomStage) roomStage.dataset.active = key;
         title.textContent = item.title;
         summary.textContent = item.summary;
         link.href = item.href;
-        dialog.showModal();
+        window.setTimeout(() => {
+          if (roomStage) delete roomStage.dataset.active;
+          dialog.showModal();
+          busy = false;
+        }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650);
       });
     });
     dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
